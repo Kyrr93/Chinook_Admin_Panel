@@ -1,0 +1,112 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Chinook_Admin_Panel.DialogEditTrack"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Chinook_Admin_Panel.ViewModels;assembly=Chinook_Admin_Panel"
+             x:DataType="vm:MainViewModel"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="400">
+	<Border Background="#2E3A46" CornerRadius="10" Padding="20">
+		<StackPanel Spacing="15">
+			<!-- Title -->
+			<TextBlock Text="Edit Track"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       HorizontalAlignment="Center" />
+
+			<!-- Name -->
+			<StackPanel Orientation="Horizontal" Spacing="10">
+				<TextBlock Text="Name:" Foreground="White" VerticalAlignment="Center" Width="100" />
+				<TextBox Width="400" Watermark="Enter track name"
+                         Text="{Binding TrackName, UpdateSourceTrigger=PropertyChanged}" />
+			</StackPanel>
+
+			<!-- Album -->
+			<StackPanel Orientation="Horizontal" Spacing="10">
+				<TextBlock Text="Album:" Foreground="White" VerticalAlignment="Center" Width="100" />
+				<ComboBox Width="400" MaxDropDownHeight="150"
+						  ItemsSource="{Binding AlbumsCollection}"
+						  SelectedItem="{Binding SelectedAlbum}">
+					<ComboBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Title}" />
+						</DataTemplate>
+					</ComboBox.ItemTemplate>
+				</ComboBox>
+			</StackPanel>
+
+			<!-- Media Type -->
+			<StackPanel Orientation="Horizontal" Spacing="10">
+				<TextBlock Text="Media Type:" Foreground="White" VerticalAlignment="Center" Width="100" />
+				<ComboBox Width="400" MaxDropDownHeight="150"
+						  ItemsSource="{Binding MediaTypesCollection}"
+						  SelectedItem="{Binding SelectedMediaType}">
+					<ComboBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Name}" />
+						</DataTemplate>
+					</ComboBox.ItemTemplate>
+				</ComboBox>
+			</StackPanel>
+
+			<!-- Genre -->
+			<StackPanel Orientation="Horizontal" Spacing="10">
+				<TextBlock Text="Genre:" Foreground="White" VerticalAlignment="Center" Width="100" />
+				<ComboBox Width="400" MaxDropDownHeight="150"
+						  ItemsSource="{Binding GenresCollection}"
+						  SelectedItem="{Binding SelectedGenre}">
+					<ComboBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Name}" />
+						</DataTemplate>
+					</ComboBox.ItemTemplate>
+				</ComboBox>
+			</StackPanel>
+
+			<!-- Composer -->
+			<StackPanel Orientation="Horizontal" Spacing="10">
+				<TextBlock Text="Composer:" Foreground="White" VerticalAlignment="Center" Width="100" />
+				<TextBox Width="400" Watermark="Enter composer name"
+                         Text="{Binding Composer, UpdateSourceTrigger=PropertyChanged}" />
+			</StackPanel>
+
+			<!-- Duration -->
+			<StackPanel Orientation="Horizontal" Spacing="10">
+				<TextBlock Text="Duration (min:sec):" Foreground="White" VerticalAlignment="Center" Width="100" />
+				<TextBox Width="400" Watermark="Enter duration (e.g., 03:45)"
+                         Text="{Binding Milliseconds, UpdateSourceTrigger=PropertyChanged}" />
+			</StackPanel>
+
+			<!-- Size -->
+			<StackPanel Orientation="Horizontal" Spacing="10">
+				<TextBlock Text="Size (MB):" Foreground="White" VerticalAlignment="Center" Width="100" />
+				<TextBox Width="400" Watermark="Enter size in MB"
+                         Text="{Binding Bytes, UpdateSourceTrigger=PropertyChanged}" />
+			</StackPanel>
+
+			<!-- Unit Price -->
+			<StackPanel Orientation="Horizontal" Spacing="10">
+				<TextBlock Text="Price ($):" Foreground="White" VerticalAlignment="Center" Width="100" />
+				<TextBox Width="400" Watermark="Enter price"
+                         Text="{Binding UnitPrice, UpdateSourceTrigger=PropertyChanged}" />
+			</StackPanel>
+
+			<!-- Action Buttons -->
+			<StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+				<Button Content="Save"
+                        Width="100"
+                        Background="#28A745"
+                        Foreground="White"
+                        Padding="10,5"
+                        Command="{Binding EditTrackCommand}" />
+				<Button Content="Cancel"
+                        Width="100"
+                        Background="#DC3545"
+                        Foreground="White"
+                        Padding="10,5"
+						Command="{Binding CloseDialogCommand}"/>
+			</StackPanel>
+		</StackPanel>
+	</Border>
+</UserControl>
