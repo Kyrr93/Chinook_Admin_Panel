@@ -1,3 +1,5 @@
+Chinook Admin Panel
+
 A panel for modifying tracks in the Chinook public sample database in AvaloniaUI.
 
 ![image](https://github.com/user-attachments/assets/968edf6d-8f02-45f1-a041-ba7096267351)
@@ -14,6 +16,9 @@ There is a dialog pop-up for every one of those buttons that uses Avalonia Dialo
 
 I have created a layered and modular architecture that allows developers to simply and efficiently add new features.
 
-
-![image](https://github.com/user-attachments/assets/de56c568-1f06-4f89-bf85-1dadfead51ff)
 ![Diagram](https://github.com/user-attachments/assets/e7ece9bf-faa8-4e3d-af2e-4793c4806031)
+
+DataAccess has the models and DB Context generated from the Chinook database.
+Infrastructure contains the DTO and interfaces for interacting with the database.
+Implementation Layer has classes implementing the from the previous layer.
+The UI Layer is the AvaloniaUI project containing all the necessary tools for cross-platform development.
